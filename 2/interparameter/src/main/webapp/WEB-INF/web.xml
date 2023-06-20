@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="5.0">
+  <servlet>
+    <description></description>
+    <display-name>InterEx</display-name>
+    <servlet-name>InterEx</servlet-name>
+    <servlet-class>kr.co.inter.ex.InterEx</servlet-class>
+    
+    <!-- ServletConfig 초기화 파라미터 설정 -->
+    <init-param>
+    <param-name>dbId</param-name>
+    <param-value>abcde</param-value>
+    </init-param>
+    <init-param>
+    <param-name>dbPwd</param-name>
+    <param-value>1234</param-value>
+    </init-param>
+    <init-param>
+    <param-name>dbSid</param-name>
+    <param-value>orcl</param-value>
+    </init-param>
+  </servlet>
+<!--     <servlet-mapping>
+    <servlet-name>InterEx</servlet-name>
+    <url-pattern>/InterEx</url-pattern>
+  </servlet-mapping> -->
+  <display-name>interparameter</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- ContextParam 지정: 모든 Servlet에서 데이터 공유 -->
+  <context-param>
+  <param-name>dbId</param-name>
+  <param-value>abcde</param-value>
+  </context-param>
+  <context-param>
+  <param-name>dbPwd</param-name>
+  <param-value>12345</param-value>
+  </context-param>
+  <context-param>
+  <param-name>dbSid</param-name>
+  <param-value>orcl</param-value>
+  </context-param>
+</web-app>
