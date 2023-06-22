@@ -6,10 +6,10 @@
     <servlet-name>Beanex</servlet-name>
     <servlet-class>kr.co.jsplec.ex.Beanex</servlet-class>
   </servlet>
-  <servlet-mapping>
+  <!-- <servlet-mapping>
     <servlet-name>Beanex</servlet-name>
     <url-pattern>/Beanex</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
   <display-name>beanex</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
