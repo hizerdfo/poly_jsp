@@ -58,9 +58,9 @@ public class Beanex extends HttpServlet {
 	    ResultSet resultSet = null;
 
 	    String driver = "oracle.jdbc.driver.OracleDriver";
-	    String url = "jdbc:oracle:thin:@192.168.119.119:1521/dink";
-	    String uid = "scott";
-	    String upw = "tiger";
+	    String url = "jdbc:oracle:thin:@dinkdb_medium?TNS_ADMIN=C:/SQLDEV/Wallet_DinkDB";
+	    String uid = "DA2307";
+	    String upw = "Data2307";
 	    String selectMemberQuery = "SELECT id, pw, name, phone1, phone2, phone3, gender FROM member";
 	    String insertMemberQuery = "INSERT INTO MEMBER VALUES (?,?,?,?,?,?,?)";
 	    
