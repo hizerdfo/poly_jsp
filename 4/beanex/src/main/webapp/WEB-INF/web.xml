@@ -6,10 +6,6 @@
     <servlet-name>Beanex</servlet-name>
     <servlet-class>kr.co.jsplec.ex.Beanex</servlet-class>
   </servlet>
-  <!-- <servlet-mapping>
-    <servlet-name>Beanex</servlet-name>
-    <url-pattern>/Beanex</url-pattern>
-  </servlet-mapping> -->
   <display-name>beanex</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -19,4 +15,20 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>login</display-name>
+    <servlet-name>login</servlet-name>
+    <servlet-class>kr.co.jsplec.ex.login</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>modifyOk</display-name>
+    <servlet-name>modifyOk</servlet-name>
+    <servlet-class>kr.co.jsplec.ex.modifyOk</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>modifyOk</servlet-name>
+    <url-pattern>/modifyOk</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>환영합니다.</h1>
-<a href="modify.jsp">회원정보 수정하기</a><br />
+<h1>수정 완료!</h1>
 <a href="logout.jsp">로그아웃</a>
 </body>
 </html>
