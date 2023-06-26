@@ -60,5 +60,7 @@
         </tr>
     <% } %>
 </table>
+<br />
+<button align ="center" type="button" onclick="history.back()">뒤로가기</button>
 </body>
 </html>

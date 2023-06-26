@@ -103,7 +103,7 @@ function checkSelected() {
     <tr><td>&nbsp;</td></tr>
     <tr align = "center">
         <td><button type="submit" name="action" value="approve">가입승인</button></td>
-        <td><button type="submit" name="action" value="approve">로그아웃</button></td>
+        <td><button align ="center" type="button" onclick="location.href='logout.jsp'">로그아웃</button></td>
     </tr>
     </table>
 </form>

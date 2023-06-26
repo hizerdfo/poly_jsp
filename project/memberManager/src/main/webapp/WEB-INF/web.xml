@@ -37,4 +37,10 @@
     <servlet-name>MemberEdit</servlet-name>
     <servlet-class>kr.co.manager.MemberEdit</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>PersonalEdit</display-name>
+    <servlet-name>PersonalEdit</servlet-name>
+    <servlet-class>kr.co.manager.PersonalEdit</servlet-class>
+  </servlet>
 </web-app>
