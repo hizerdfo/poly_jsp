@@ -4,12 +4,30 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.regex.Matcher" %>
 <%@ page import="java.util.regex.Pattern" %>
+<%@ page import="java.util.Comparator" %>
 <%
     MemberDAO dao = MemberDAO.getInstance();
     ArrayList<MemberDTO> memberList = dao.memberSelect();
     
     String phoneRegex = "(\\d{3})(\\d{3,4})(\\d{4})";
     Pattern phonePattern = Pattern.compile(phoneRegex);
+    
+    memberList.sort(new Comparator<MemberDTO>() {
+        @Override
+        public int compare(MemberDTO m1, MemberDTO m2) {
+            if (m1.getStatus().equals("N") && !m2.getStatus().equals("N")) {
+                return -1; // m1이 "N" 상태이고 m2가 "N" 상태가 아닌 경우, m1을 우선 순위로 설정
+            } else if (!m1.getStatus().equals("N") && m2.getStatus().equals("N")) {
+                return 1; // m1이 "N" 상태가 아니고 m2가 "N" 상태인 경우, m2를 우선 순위로 설정
+            } else {
+                return m1.getStatus().compareTo(m2.getStatus()); // 그 외의 경우에는 상태로 정렬
+            }
+        }
+    });
+
+    String[] permissionLabels = {"일반", "매니저", "관리자"};
+
+    String[] statusLabels = {"승인대기", "승인완료"};
 %>
 
 <!DOCTYPE html>
@@ -64,7 +82,11 @@ function checkSelected() {
                Matcher matcher = phonePattern.matcher(phone);
                String maskedPhone = matcher.replaceAll("$1-****-****");
             %>
-		    <tr>
+            <%-- 상태가 "N"인 경우 배경색 변경 --%>
+            <% String status = dtos.getStatus();
+               String bgColor = status.equals("N") ? "yellow" : "white";
+            %>
+		    <tr style="background-color: <%= bgColor %>">
 		        <td><input type="checkbox" name="selectedMembers" value="<%= dtos.getId() %>" onclick="checkSelected()"></td>
 		        <td><%= dtos.getId() %></td>
 		        <td><%= dtos.getName() %></td>
@@ -81,6 +103,7 @@ function checkSelected() {
     <tr><td>&nbsp;</td></tr>
     <tr align = "center">
         <td><button type="submit" name="action" value="approve">가입승인</button></td>
+        <td><button type="submit" name="action" value="approve">로그아웃</button></td>
     </tr>
     </table>
 </form>

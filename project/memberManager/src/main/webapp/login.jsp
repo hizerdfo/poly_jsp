@@ -15,12 +15,13 @@
     </div>
 <% } %>
 <form action="loginOk" method="post">
-    아이디&nbsp;<input type="text" name="id" size="10"><br />
-    비밀번호&nbsp;<input type="password" name="pw" size="10"><br /><br />
-    <input type="hidden" name = "permission" value="<%= request.getParameter("permission") %>">
-    <input type="submit" name="submit" value="전송">&nbsp;
-    <input type="reset" name="reset" value="초기화">&nbsp;
-    <input type="button" onclick ="location.href='join.jsp'" value="회원가입">
-</form>
+        아이디&nbsp;<input type="text" name="id" size="10"><br />
+        비밀번호&nbsp;<input type="password" name="pw" size="10"><br /><br />
+        <input type="radio" name="permission" value="U" checked> 사용자
+        <input type="radio" name="permission" value="A"> 관리자<br><br />
+        <input type="submit" name="submit" value="로그인">&nbsp;
+        <input type="reset" name="reset" value="초기화">&nbsp;
+        <input type="button" onclick="location.href='join.jsp'" value="회원가입">
+    </form>
 </body>
 </html>
