@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+body {
+    background-color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+h1{
+    color: #8F8681;
+    text-align: center;
+}
+h2 {
+    color: #665D59;
+    text-align: center;
+}
+.message {
+    background-color: #F7F7F7;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #333333;
+    border-radius: 20px;
+    text-align:center;
+    width:50%;
+    margin:0 auto;
+}
+
+.login-form {
+    background-color: white;
+    padding: 30px;
+    width: 300px;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+input[type="text"],
+input[type="password"] {
+      width: 90%;
+	  padding: 10px 10px 10px;
+	  background-color: transparent;
+	  border: none;
+	  border-bottom: 1px solid black;
+	  font-size: 18px;
+	  outline: none;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #8F8681;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    height: 35px;
+    width: 30%;
+    font-size:medium;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+    background-color: #665D59;
+}
+
+/*commitMember-*/
+
+.member-management-button {
+    background-color: #8F8681;
+    color: white;
+    border-radius: 10px;
+    font-size: medium;
+    font-family: 'Noto Sans KR', sans-serif;
+    
+}
+
+.member-management-button:hover {
+    background-color: #665D59;
+}
+
+.member-management-button:disabled {
+    
+    cursor: not-allowed;
+}
+
+.table-form {
+  border-radius: 10px;
+}
+.table-style {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
+  table-layout: fixed;
+  
+}
+
+.table-style th,
+.table-style td {
+  border: 1px solid #8F8681;
+  padding: 8px;
+  text-align: center;
+}
+
+.table-style th {
+  background-color: #8F8681;
+  color: white;
+}
+
+.table-style tr:nth-child(even) {
+  background-color: white;
+}
+
+
+/* 버튼 스타일 */
+.button-style {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.button-style button {
+  padding: 8px 16px;
+  background-color: #8F8681;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  height: 35px;
+  font-size: medium;
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 20px;
+  margin: 0 auto;
+}
+.button-style button:hover{
+	background-color: #665D59;
+}
+.button-style button:not(:last-child) {
+  margin-right: 10px;
+}
+.table-style tr.approval-pending {
+  background-color: #D1DDDB;
+}
+
+/*join-*/ 
+.signup-form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+    }
+    
+   .signup-form h1 {
+       text-align: center;
+       color: #8F8681;
+       font-family: 'Noto Sans KR', sans-serif;
+   }
+   
+   .signup-form input[type="text"],
+   .signup-form input[type="password"],
+   .signup-form input[type="email"]{
+      width: 90%;
+      padding: 10px 10px 10px;
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid #8F8681;
+      font-size: 18px;
+      outline: none;
+       
+   }
+   
+ .signup-form input[type="submit"],
+ .signup-form input[type="reset"] {
+     width: 40%;
+     background-color: #8F8681;
+     color: white;
+     cursor: pointer;
+     border-radius: 10px;
+     height: 40px;
+  font-size: medium;
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 15px;
+  margin: 0 auto;
+  height: 40px;
+ }
+ 
+ .signup-form input[type="submit"]:hover,
+ .signup-form input[type="reset"]:hover {
+     background-color: #8F8681;
+ }
+ 
+ .signup-form label {
+     display: inline-block;
+     width: 100px;
+     font-family: 'Noto Sans KR', sans-serif;
+ }
+ .signup-form .permission-labels {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+}
+
+.signup-form .permission-labels label {
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+.signup-form .permission-labels input[type="radio"] {
+    margin-left: 1px;
+}
+
+.signup-form .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.signup-form .button-container input[type="submit"],
+.signup-form .button-container input[type="reset"] {
+    width: 40%;
+}
+
+/*admin페이지*/
+.admin-button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.admin-button-style {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #8F8681;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 35px;
+  width: 100px;
+  font-size: medium;
+  font-family: 'Noto Sans KR', sans-serif;
+  text-align: center;
+  line-height:35px;
+}
+
+.admin-button-style:hover {
+  background-color: #665D59;
+}
+/*로그아웃*/
+.logout-button-style {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #8F8681;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      height: 35px;
+      width: 100px;
+      font-size: medium;
+      font-family: 'Noto Sans KR', sans-serif;
+      text-align: center;
+      line-height:25px;
+      margin:0 auto;
+}
+.logout-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+/*개인정보수정*/
+.personal-button {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #8F8681;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      height: 35px;
+      width: 100px;
+      font-size: medium;
+      font-family: 'Noto Sans KR', sans-serif;
+      text-align: center;
+      line-height:25px;
+      margin:0 auto;
+}
+.personal-button:hover{
+	background-color: #665D59;
+}
+/*Edit*/
+.table-container {
+    margin: 20px auto;
+}
+
+.table-container table {
+    border-collapse: collapse;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.table-container th, .table-container td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.personal-button {
+    background-color: #8F8681;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: medium;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-right: 10px;
+    padding: 10px 20px;
+    line-height:10px;
+}
+
+.personal-button:hover {
+    background-color: #665D59;
+}
+
+/* Additional styles for form inputs */
+.table-container input[type="text"],
+.table-container input[type="password"] {
+    width: 200px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    
+}

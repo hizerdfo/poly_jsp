@@ -39,9 +39,9 @@ public class JoinOk extends HttpServlet {
         int result = dao.insertMember(dto);
 
         if (result == 1) {
-            request.setAttribute("message", "회원 가입 성공");
+            request.setAttribute("message", "회원 가입을 신청하였습니다. (관리자 승인 필요)");
         } else {
-            request.setAttribute("message", "회원 가입 실패");
+            request.setAttribute("message", "회원 가입을 실패하였습니다.");
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");

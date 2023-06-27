@@ -27,7 +27,12 @@ public class LoginOk extends HttpServlet {
         
         switch(result) {
             case 2:
-                request.setAttribute("message", "회원 승인 대기중입니다.");
+                member = dao.getUser(id);
+                if (member.getStatus().equals("D")) {
+                    request.setAttribute("message", "탈퇴한 회원입니다.");
+                } else {
+                    request.setAttribute("message", "회원 승인 대기중입니다.");
+                }
                 RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
                 dispatcher.forward(request, response);
                 break;
@@ -38,7 +43,9 @@ public class LoginOk extends HttpServlet {
                 
                     if (userType.equals("U")) {
                         // 사용자 로그인 성공 시 사용자 페이지로 이동
-                        request.setAttribute("message", "사용자 로그인 성공");
+                        HttpSession session = request.getSession();
+                        session.setAttribute("memberId", id);
+
                         response.sendRedirect("user.jsp");
                         return;
                     } else if (userType.equals("A")) {
