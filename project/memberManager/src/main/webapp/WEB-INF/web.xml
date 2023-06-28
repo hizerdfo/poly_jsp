@@ -43,4 +43,16 @@
     <servlet-name>PersonalEdit</servlet-name>
     <servlet-class>kr.co.manager.PersonalEdit</servlet-class>
   </servlet>
+  <servlet>
+    <description></description>
+    <display-name>FrontCon</display-name>
+    <servlet-name>FrontCon</servlet-name>
+    <servlet-class>kr.co.manager.FrontCon</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>RequestObj</display-name>
+    <servlet-name>RequestObj</servlet-name>
+    <servlet-class>kr.co.manager.RequestObj</servlet-class>
+  </servlet>
 </web-app>
