@@ -14,8 +14,29 @@ public class BoardService {
         return articlesList;
     }
 
-    public void addArticle(BoardDTO article) {
+    public int addArticle(BoardDTO article) {
         // TODO Auto-generated method stub
-        boardDAO.insertNewArticle(article);
+        return boardDAO.insertNewArticle(article);
     }
+    
+    public BoardDTO viewArticle(int articleNO) {
+    	BoardDTO article = null;
+    	article = boardDAO.selectArticle(articleNO);
+    	return article;
+    }
+    
+    public void modArticle(BoardDTO article) {
+    	boardDAO.updateArticle(article);
+    }
+
+	public List<Integer> removeArticle(int articleNO) {
+		List<Integer> articleNOList = boardDAO.selectRemovedArticles(articleNO);
+		boardDAO.deleteArticle(articleNO);
+		return articleNOList;
+	}
+	
+	public int addReply(BoardDTO article) {
+		return boardDAO.insertNewArticle(article);
+	}
+
 }

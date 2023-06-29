@@ -19,7 +19,7 @@ public class BoardDAO {
     public BoardDAO() {
         try {
             Context ctx = new InitialContext();
-            ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Oracle8g");
+            ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Oraclellg");
             System.out.println("Oracle 연결 성공");
         } catch (Exception e) {
             e.printStackTrace();
@@ -29,7 +29,7 @@ public class BoardDAO {
     public List<BoardDTO> SelectAllArticles() {
         List<BoardDTO> articlesList = new ArrayList<>();
         ResultSet rs = null;
-        String sql = "select LEVEL, articleNO, parentNO, title, content, id, post_date, hit_count from mvc_board\r\n"
+        String sql = "select LEVEL, articleNO, parentNO, title, content, id, postDate, hitCount from mvc_board\r\n"
                 + "start with parentNO = 0\r\n"
                 + "connect by prior articleNO = parentNO\r\n"
                 + "order siblings by articleNO";
@@ -46,8 +46,8 @@ public class BoardDAO {
                 String title = rs.getString("title");
                 String content = rs.getString("content");
                 String id = rs.getString("id");
-                Date post_date = rs.getDate("post_date");
-                int hit_count = rs.getInt("hit_count");
+                Date postDate = rs.getDate("postDate");
+                int hitCount = rs.getInt("hitCount");
                 
                 
                 BoardDTO article = new BoardDTO();
@@ -57,8 +57,8 @@ public class BoardDAO {
                 article.setTitle(title);
                 article.setContent(content);
                 article.setId(id);
-                article.setPostDate(post_date);
-                article.setHitCount(hit_count);
+                article.setPostDate(postDate);
+                article.setHitCount(hitCount);
                 
                 
                 articlesList.add(article);
@@ -94,11 +94,11 @@ public class BoardDAO {
             }
         return 0;
     }
-    public void insertNewArticle(BoardDTO article) {
+    public int insertNewArticle(BoardDTO article) {
+    	int articleNO = getNewArticleNO();
         // TODO Auto-generated method stub
         try {
             conn = ds.getConnection();
-            int articleNO = getNewArticleNO();
             int parentNO = article.getParentNO();
             String title = article.getTitle();
             String content = article.getContent();
@@ -111,12 +111,114 @@ public class BoardDAO {
             pstmt.setInt(2, parentNO);
             pstmt.setString(3, title);
             pstmt.setString(4, content);
-            pstmt.setNString(6, id);
+            pstmt.setNString(5, id);
             pstmt.executeUpdate();
             pstmt.close();
             conn.close();
         }catch(Exception e) {
             e.printStackTrace();
         }
+        return articleNO;
     }
+
+	public BoardDTO selectArticle(int articleNO) {
+		BoardDTO article = new BoardDTO();
+		try {
+			conn = ds.getConnection();
+			String query = "select articleNO, parentNO, title, content, id, postDate "
+					+ "from mvc_board "
+					+ "where articleNO=?";
+			
+			System.out.println(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, articleNO);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			
+			int _articleNO = rs.getInt("articleNO");
+			int parentNO = rs.getInt("parentNO");
+			String title = rs.getString("title");
+			String content = rs.getString("content");
+			String id = rs.getString("id");
+			Date postDate = rs.getDate("postDate");
+					
+			article.setArticleNO(_articleNO);
+			article.setParentNO(parentNO);
+			article.setTitle(title);
+			article.setContent(content);
+			article.setId(id);
+			article.setPostDate(postDate);
+			rs.close();
+			conn.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return article;
+	}
+
+	public void updateArticle(BoardDTO article) {
+		int articleNO = article.getArticleNO();
+		String title = article.getTitle();
+		String content = article.getContent();
+		try {
+			conn = ds.getConnection();
+			String query = "update mvc_board set title =?, content =? where articleNO = ?";
+						
+			System.out.println(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, articleNO);
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void deleteArticle(int articleNO) {
+		try {
+			conn = ds.getConnection();
+			String query ="DELETE FROM mvc_board";
+			query += "WHERE articleNO in (";
+			query +=" SELECT articleNO FROM mvc_board";
+			query +=" START WITH articleNO = ?";
+			query +=" CONNECT BY PRIOR articleNO = parentNO )";
+			
+			System.out.println(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, articleNO);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public List<Integer> selectRemovedArticles(int articleNO) {
+		List<Integer> articleNOList = new ArrayList<Integer>();
+		try {
+			conn = ds.getConnection();
+			String query ="SELECT articleNO FROM mvc_board";
+			query += " START WITH articleNO = ?";
+			query += " CONNECT BY PRIOR articleNO = parentNO";
+			System.out.println(query);
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, articleNO);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				articleNO = rs.getInt("articleNO");
+				articleNOList.add(articleNO);
+			}
+			pstmt.close();
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return articleNOList;
+	}
 }

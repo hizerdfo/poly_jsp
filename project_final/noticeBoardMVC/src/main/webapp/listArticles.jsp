@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" 
+isELIgnored ="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var ="contextPath" value="${pageContext.request.contextPath }" />
 <%
 request.setCharacterEncoding("UTF-8");
-String contextPath = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -42,10 +43,10 @@ String contextPath = request.getContextPath();
                                         <span style="padding-left:20px"></span>
                                     </c:forEach>
                                     <span>답변</span>
-                                    <a class='cls1' href="${contextPath}/viewarticle.do?articleNO=${article.articleNO}">${article.title}</a>
+                                    <a class='cls1' href="${contextPath}/viewArticle.do?articleNO=${article.articleNO}">${article.title}</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a class='cls1' href="${contextPath}/viewarticle.do?articleNO=${article.articleNO}">${article.title}</a>
+                                    <a class='cls1' href="${contextPath}/viewArticle.do?articleNO=${article.articleNO}">${article.title}</a>
                                 </c:otherwise>
                             </c:choose>
                         </td>
@@ -54,8 +55,8 @@ String contextPath = request.getContextPath();
                 </c:forEach>
             </c:when>
         </c:choose>
-    </table>
-    <form action="${contextPath}/articleForm.do" method="post">
+    </table>                                                             
+    <form action="http://localhost:8080/noticeBoardMVC/articleForm.do" method="post">
         <button type="submit" class="cls1">글쓰기</button>
     </form>
 </body>

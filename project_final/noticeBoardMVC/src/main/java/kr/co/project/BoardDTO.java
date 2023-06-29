@@ -4,9 +4,8 @@ import java.util.Date;
 
 public class BoardDTO {
     private int level;
-    private int articleNO;
     private int parentNO;
-    
+	private int articleNO;
     private String title;
     private String content;    
     private String id;
@@ -19,9 +18,10 @@ public class BoardDTO {
         
     }
     
-    public BoardDTO(int level, int articleNO, int parentNO, String title, String content, String id, int hitCount ) {
+    public BoardDTO( int level, int articleNO, int parentNO, String title, String content, int hitCount, String id) {
+        super();
         this.level = level;
-        this.articleNO = articleNO;
+    	this.articleNO = articleNO;
         this.parentNO = parentNO;
         this.title = title;
         this.content = content;
